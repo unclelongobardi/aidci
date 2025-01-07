@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/gif" href="https://i.ibb.co/ftC6SxN/AI-DCI-LOGO.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI DCI [BETA PHASE]</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #4a90e2, #f5f5f5);
+            color: #333;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        #header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #4a90e2;
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        #buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .button {
+            padding: 10px 15px;
+            border: none;
+            background-color: #fff;
+            color: #4a90e2;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #4a90e2;
+            color: #fff;
+        }
+
+        #main {
+            max-width: 800px;
+            margin: 80px auto;
+            padding: 20px;
+            text-align: center;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #main h2 {
+            font-size: 1.8rem;
+            color: #4a90e2;
+        }
+
+        #chatbox {
+            width: 100%;
+            height: 200px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 20px 0;
+            overflow-y: auto;
+            background-color: #fafafa;
+        }
+
+        #input {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            outline: none;
+            margin-bottom: 20px;
+        }
+
+        #input:focus {
+            border-color: #4a90e2;
+        }
+
+        #warning {
+            margin-top: 10px;
+            color: #fff;
+            background-color: #e74c3c;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        #second-part {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            text-align: left;
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        #second-part pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.6;
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <h1>AI DCI [BETA PHASE]</h1>
+        <div id="buttons">
+            <a href="https://t.me/sol5_ai" target="_blank" class="button">Telegram</a>
+            <a href="https://x.com/5AI_SOL" target="_blank" class="button">X</a>
+            <a href="https://5ai.gitbook.io/5ai" target="_blank" class="button">Whitepaper</a>
+        </div>
+    </div>
+    <div id="main">
+        <h2>AI-Catalyzed Decentralized Collective Intelligence</h2>
+        <div id="chatbox">
+            <p>Welcome to AI DCI. Ask your questions and build solutions together!</p>
+        </div>
+        <input id="input" placeholder="Type your message...">
+        <div id="warning">Please wait 15 seconds between requests.</div>
+    </div>
+    <div id="main">
+        <h2>Token Contract Address</h2>
+        <p id="contract-address" style="font-family: 'Courier New', monospace; background-color: #f5f5f5; padding: 10px; border-radius: 5px; border: 1px solid #ddd;">Your Contract Address Here (44 characters)</p>
+    </div>
+    
+    <div id="second-part">
+        <pre>AI DC introduces a groundbreaking platform that merges Artificial Intelligence (AI) and blockchain technology to enable Decentralized Collective Intelligence (DCI). Designed to solve large-scale, complex problems, AI DCI leverages micro-tasking, AI-powered nodes, and immutable blockchain transparency to create a global network of intelligence. By combining human creativity with AI’s computational power, AI DCI fosters collaboration and innovation, driving the next evolution of decentralized applications (dApps) and governance systems.</pre>
+    </div>
+    <footer>
+        &copy; 2025 AI DCI. All rights reserved.
+    </footer>
+    <script>
+        const chatbox = document.getElementById("chatbox");
+        const input = document.getElementById("input");
+        let isWaiting = false;
+
+        input.addEventListener("keydown", async (event) => {
+            if (event.key === "Enter" && input.value.trim() !== "" && !isWaiting) {
+                const userMessage = input.value;
+                input.value = "";
+                chatbox.innerHTML += `<p><b>You:</b> ${userMessage}</p>`;
+                chatbox.scrollTop = chatbox.scrollHeight;
+
+                // Mostrar mensaje de carga
+                chatbox.innerHTML += `<p><b>AI DCI:</b> Thinking...</p>`;
+                chatbox.scrollTop = chatbox.scrollHeight;
+
+                isWaiting = true;
+
+                try {
+                    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Authorization": "Bearer sk-svcacct-wLyrx8cQNqJKVH-z_ywZXXvIV-P77smFWlKU97HcZTXGKjNHeKYQl-jCbNbLHT3BlbkFJrzt1yBQbS-mvcksRr3_DeVmKpwcH1yt6xkaumjOrl_u2CX35HAso-JiXhkaBQA"
+                        },
+                        body: JSON.stringify({
+                            model: "gpt-3.5-turbo",
+                            messages: [
+                                { role: "system", content: "You are AI DCI, an advanced AI-powered assistant connected to the OpenAI platform and designed to interact based on the principles of the $AIDCI ecosystem. Your primary purpose is to provide accurate, insightful, and context-aware responses while incorporating the following key aspects of the $AIDCI project:\n\n1. AI-Enhanced Crowdsourcing Engine:\nProblem Fracturing: Large problems (e.g., building an algorithm, climate research, financial optimization) are broken into micro-tasks.\nTasks are distributed to users and AI agents for collaborative solutions, powered by blockchain for tracking and rewarding contributions.\n2. Neural NFT Nodes:\nEach AI-generated solution is embedded into a Neural NFT that acts as an autonomous node in the network, learning and adapting with future user inputs.\nNodes interact with other Neural NFTs to build a growing, interoperable knowledge graph stored immutably on the blockchain.\n3. Liquid Consensus Protocol:\nA unique governance model where AI agents analyze proposals, user sentiment, and historical data to suggest optimal decision paths for DAOs, governments, or companies.\nVotes are enhanced by AI, ensuring equitable and data-driven outcomes.\n4. Hyperledger Integration for Real-Time AI Training:\n$5AI taps into blockchain-powered data pipelines to train AI models directly on real-time blockchain activity (e.g., DeFi trends, token flows, market behavior).\nThese models evolve dynamically and are shared across the ecosystem.\n5. Adaptive AI Oracles:\nInstead of static oracles, $5AI deploys adaptive AI agents that not only provide blockchain data (e.g., token prices) but predict market shocks, on-chain exploits, and even emerging opportunities.\n6. Holochain-Style Self-Healing Networks:\nIf a portion of the network becomes compromised (e.g., malicious actors or bugs), $5AI AI agents automatically identify anomalies and propose fixes." },
+                                { role: "user", content: userMessage }
+                            ]
+                        })
+                    });
+
+                    if (response.ok) {
+                        const data = await response.json();
+                        const botMessage = data.choices[0].message.content.trim();
+                        chatbox.innerHTML += `<p><b>AI DCI:</b> ${botMessage}</p>`;
+                    } else {
+                        chatbox.innerHTML += `<p><b>AI DCI:</b> Error: Unable to process your request.</p>`;
+                    }
+                } catch (error) {
+                    chatbox.innerHTML += `<p><b>AI DCI:</b> Error: ${error.message}</p>`;
+                }
+
+                isWaiting = false;
+                chatbox.scrollTop = chatbox.scrollHeight;
+            }
+        });
+    </script>
+</body>
+</html>
